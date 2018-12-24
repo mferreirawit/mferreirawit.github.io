@@ -9,18 +9,15 @@
   OneSignal.push(function() {
     OneSignal.init({
       appId: "b9efe6a9-b300-4072-ac0e-61bebc4d18cb",
-      notifyButton: {
-        /* Your other Subscription Bell settings here ... */
-        enable: true,
-        displayPredicate: function() {
-            return OneSignal.isPushNotificationsEnabled()
-                .then(function(isPushEnabled) {
-                    /* The user is subscribed, so we want to return "false" to hide the Subscription Bell */
-              console.log("isPushEnabled", isPushEnabled);
-                    return !isPushEnabled;
-                });
-        },
-    }
+      subscriptionChange: function (isSubscribed) {
+          console.log("The user's subscription state is now:", isSubscribed);
+        
+            console.log("OneSignal", OneSignal);
+           console.log("getUserId", OneSignal.getUserId());
+            console.log("getRegistrationId", OneSignal.getRegistrationId());
+      },
+  });
+});
     });
   });
   
