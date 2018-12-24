@@ -13,10 +13,10 @@
     
       OneSignal.on('subscriptionChange', function (isSubscribed) {
         console.log("The user's subscription state is now:", isSubscribed);
-        
-            console.log("OneSignal", OneSignal);
-           console.log("getUserId", OneSignal.getUserId());
-            console.log("getRegistrationId", OneSignal.getRegistrationId());
+           OneSignal.getUserId().then(function(result) {
+                // here you can use the result of promiseB
+              console.log("result-userId",  result);
+           });
       });
   });
 </script>
