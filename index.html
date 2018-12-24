@@ -9,19 +9,16 @@
   OneSignal.push(function() {
     OneSignal.init({
       appId: "b9efe6a9-b300-4072-ac0e-61bebc4d18cb",
-      subscriptionChange: function (isSubscribed) {
-          console.log("The user's subscription state is now:", isSubscribed);
+    });
+    
+      OneSignal.on('subscriptionChange', function (isSubscribed) {
+        console.log("The user's subscription state is now:", isSubscribed);
         
             console.log("OneSignal", OneSignal);
            console.log("getUserId", OneSignal.getUserId());
             console.log("getRegistrationId", OneSignal.getRegistrationId());
-      },
-    });
+      });
   });
-  
-  console.log("OneSignal", OneSignal);
-    console.log("getUserId", OneSignal.getUserId());
-    console.log("getRegistrationId", OneSignal.getRegistrationId());
 </script>
 </head>
   
