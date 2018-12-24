@@ -16,12 +16,15 @@
             return OneSignal.isPushNotificationsEnabled()
                 .then(function(isPushEnabled) {
                     /* The user is subscribed, so we want to return "false" to hide the Subscription Bell */
+              console.log("isPushEnabled", isPushEnabled);
                     return !isPushEnabled;
                 });
         },
     }
     });
   });
+  
+  console.log("OneSignal", OneSignal);
 </script>
 </head>
   
