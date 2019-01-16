@@ -5,7 +5,7 @@
         <title>GoogleTest</title>
 <script>
   var GoogleAuth;
-  var SCOPE = 'https://www.googleapis.com/auth/drive.metadata.readonly';
+  var SCOPE = 'profile';
   function handleClientLoad() {
     // Load the API's client and auth2 modules.
     // Call the initClient function after the modules load.
@@ -20,7 +20,6 @@
     // 'scope' field specifies space-delimited list of access scopes.
     gapi.client.init({
         'apiKey': 'L9B_0Ri_pzDgK5eRdNkreXLX',
-        'discoveryDocs': [discoveryUrl],
         'clientId': '668700805353-j225g18rrfabortcjeegpqmrbk2ocs3b.apps.googleusercontent.com',
         'scope': SCOPE
     }).then(function () {
