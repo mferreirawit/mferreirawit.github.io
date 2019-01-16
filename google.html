@@ -1,3 +1,8 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+        <title>GoogleTest</title>
 <script>
   var GoogleAuth;
   var SCOPE = 'https://www.googleapis.com/auth/drive.metadata.readonly';
@@ -6,12 +11,10 @@
     // Call the initClient function after the modules load.
     gapi.load('client:auth2', initClient);
   }
-
   function initClient() {
     // Retrieve the discovery document for version 3 of Google Drive API.
     // In practice, your app can retrieve one or more discovery documents.
     var discoveryUrl = 'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest';
-
     // Initialize the gapi.client object, which app uses to make API requests.
     // Get API key and client ID from API Console.
     // 'scope' field specifies space-delimited list of access scopes.
@@ -22,14 +25,11 @@
         'scope': SCOPE
     }).then(function () {
       GoogleAuth = gapi.auth2.getAuthInstance();
-
       // Listen for sign-in state changes.
       GoogleAuth.isSignedIn.listen(updateSigninStatus);
-
       // Handle initial sign-in state. (Determine if user is already signed in.)
       var user = GoogleAuth.currentUser.get();
       setSigninStatus();
-
       // Call handleAuthClick function when user clicks on
       //      "Sign In/Authorize" button.
       $('#sign-in-or-out-button').click(function() {
@@ -40,7 +40,6 @@
       }); 
     });
   }
-
   function handleAuthClick() {
     if (GoogleAuth.isSignedIn.get()) {
       // User is authorized and has clicked 'Sign out' button.
@@ -50,11 +49,9 @@
       GoogleAuth.signIn();
     }
   }
-
   function revokeAccess() {
     GoogleAuth.disconnect();
   }
-
   function setSigninStatus(isSignedIn) {
     var user = GoogleAuth.currentUser.get();
     var isAuthorized = user.hasGrantedScopes(SCOPE);
@@ -70,11 +67,14 @@
           'signed out.');
     }
   }
-
   function updateSigninStatus(isSignedIn) {
     setSigninStatus();
   }
 </script>
+
+</head>
+  
+<body>
 
 <button id="sign-in-or-out-button"
         style="margin-left: 25px">Sign In/Authorize</button>
@@ -88,3 +88,6 @@
         onload="this.onload=function(){};handleClientLoad()" 
         onreadystatechange="if (this.readyState === 'complete') this.onload()">
 </script>
+
+</body>
+</html>
