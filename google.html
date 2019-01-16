@@ -20,6 +20,7 @@
     gapi.client.init({
         'apiKey': 'L9B_0Ri_pzDgK5eRdNkreXLX',
         'clientId': '668700805353-j225g18rrfabortcjeegpqmrbk2ocs3b.apps.googleusercontent.com',
+        'redirect_uri'='http://localhost:8080/oauth2/callback/google'
         'scope': SCOPE
     }).then(function () {
       GoogleAuth = gapi.auth2.getAuthInstance();
