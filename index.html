@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>OSTest</title>
-<link rel="manifest" href="/manifest.json" />
-<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-<script>
-  var OneSignal = window.OneSignal || [];
-  OneSignal.push(function() {
-    OneSignal.init({
-      appId: "b9efe6a9-b300-4072-ac0e-61bebc4d18cb",
-    });
-    
-      OneSignal.on('subscriptionChange', function (isSubscribed) {
-        console.log("The user's subscription state is now:", isSubscribed);
-           OneSignal.getUserId().then(function(result) {
-                // here you can use the result of promiseB
-              console.log("result-userId",  result);
-           });
-      });
-  });
-</script>
+<head>
+    <title>Web Push Notifications Test</title>
+    <script src="https://dev.wit-software.com/a2p/rest/sdks/webpush/WITBuzzSDK.js" async=""></script>
+    <script>
+        window.onload = function init() {
+            WITBuzzInit({
+                appId: '9a82d40a-6183-4c1d-867d-80a2376c492a'
+            });
+        }
+
+        function askForPermission() {
+            // Ensure that the user can receive Safari Push Notifications.
+            if ('safari' in window && 'pushNotification' in window.safari) {
+                safariInit({
+                    appId: '9a82d40a-6183-4c1d-867d-80a2376c492a',
+                    workerFilePath: '/webpush'
+                });
+            }
+        }
+    </script>
 </head>
-  
+
 <body>
-  
+
 <h1>Hello</h1>
-  
+
+<a href="#" onclick="askForPermission();">Activate Safari Push</a>
+
 </body>
 </html>
