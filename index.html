@@ -4,11 +4,11 @@
     <title>Web Push Notifications Test</title>
     <script src="https://dev.wit-software.com/a2p/rest/sdks/webpush/WITBuzzSDK.js" async=""></script>
     <script>
-        window.onload = function init() {
+        window.addEventListener('load', function() {
             WITBuzzInit({
                 appId: '792acbe6-18dd-40d4-8e21-d9779b8a6d71'
             });
-        }
+        });
 
         function askForPermission() {
             // Ensure that the user can receive Safari Push Notifications.
