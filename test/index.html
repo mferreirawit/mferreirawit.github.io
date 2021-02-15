@@ -4,21 +4,18 @@
     <title>Web Push Notifications Test</title>
     <script src="https://dev.wit-software.com/a2p/rest/sdks/webpush/WITBuzzSDK.js" async=""></script>
     <script>
-        window.onload = function init() {
+        window.addEventListener('load', function () {
             WITBuzzInit({
                 appId: '25f48ebf-53ce-4671-aff3-3d6fc1cbd0ec',
                 workerFilePath: '/test'
             });
-        }
+        });
 
         function askForPermission() {
-            // Ensure that the user can receive Safari Push Notifications.
-            if ('safari' in window && 'pushNotification' in window.safari) {
                 safariInit({
                     appId: '25f48ebf-53ce-4671-aff3-3d6fc1cbd0ec',
                     workerFilePath: '/test'
                 });
-            }
         }
     </script>
 </head>
