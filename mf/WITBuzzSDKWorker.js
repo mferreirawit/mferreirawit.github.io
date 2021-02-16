@@ -56,7 +56,9 @@ async function onNotificationClicked(event) {
 async function openUrl(url) {
     console.info('Opening notification URL:', url);
     try {
-        return await self.clients.openWindow(url);
+        return await self.clients.openWindow(url).then(function (client) {
+            client.navigate(url);
+        });
     } catch (e) {
         console.warn(`Failed to open the URL '${url}':`, e);
         return null;
