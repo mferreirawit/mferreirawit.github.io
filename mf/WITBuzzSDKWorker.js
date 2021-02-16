@@ -34,10 +34,20 @@ async function onNotificationClicked(event) {
                 break;
             }
         }
-        if (openClient) {
-            await openClient.focus();
+        if (openClient instanceof WindowClient) {
+            try {
+                await openClient.focus();
+            } catch (e) {
+                console.error("Failed to focus:", client, e);
+            }
+            try {
+                if (openClient.navigate) {
+                    await openClient.navigate(urlToOpen);
+                }
+            } catch (e) {
+                console.error("Failed to navigate:", client, launchUrl, e);
+            }
         } else {
-            await self.clients.navigate(urlToOpen);
             await openUrl(urlToOpen);
         }
     }
@@ -48,7 +58,7 @@ async function openUrl(url) {
     try {
         return await self.clients.openWindow(url);
     } catch (e) {
-        console.info(`Failed to open the URL '${url}':`, e);
+        console.warn(`Failed to open the URL '${url}':`, e);
         return null;
     }
 }
