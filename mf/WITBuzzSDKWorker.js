@@ -37,6 +37,7 @@ async function onNotificationClicked(event) {
         if (openClient) {
             await openClient.focus();
         } else {
+            await self.clients.navigate(urlToOpen);
             await openUrl(urlToOpen);
         }
     }
