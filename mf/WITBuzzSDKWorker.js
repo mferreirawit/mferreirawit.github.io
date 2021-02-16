@@ -38,14 +38,14 @@ async function onNotificationClicked(event) {
             try {
                 await openClient.focus();
             } catch (e) {
-                console.error("Failed to focus:", client, e);
+                console.error("Failed to focus:", openClient, e);
             }
             try {
                 if (openClient.navigate) {
                     await openClient.navigate(urlToOpen);
                 }
             } catch (e) {
-                console.error("Failed to navigate:", client, launchUrl, e);
+                console.error("Failed to navigate:", openClient, urlToOpen, e);
             }
         } else {
             await openUrl(urlToOpen);
