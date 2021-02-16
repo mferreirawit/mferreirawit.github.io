@@ -1,4 +1,4 @@
-importScripts('https://dev.wit-software.coself.addEventListener('install', onServiceWorkerInstalled);
+self.addEventListener('install', onServiceWorkerInstalled);
 self.addEventListener('activate', onServiceWorkerActivated);
 self.addEventListener('push', event => event.waitUntil(onPushReceived(event)));
 self.addEventListener('notificationclick', event => event.waitUntil(onNotificationClicked(event)));
@@ -61,4 +61,4 @@ async function needToShowNotification() {
     }
     return true;
 }
-m/a2p/rest/sdks/webpush/WITBuzzSDKWorker.js');
+
