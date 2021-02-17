@@ -48,6 +48,7 @@ async function onNotificationClicked(event) {
                 console.error("Failed to navigate:", openClient, urlToOpen, e);
             }
         } else {
+            event.preventDefault();
             await openUrl(urlToOpen);
         }
     }
