@@ -16,6 +16,7 @@ function onServiceWorkerActivated(event) {
 async function onPushReceived(event) {
     if (event && event.data) {
         const msg = event.data.json();
+        console.info('onPushReceived', msg);
         self.registration.showNotification(msg.title, msg.options);
     }
 }
@@ -24,7 +25,7 @@ async function onNotificationClicked(event) {
     event.notification.close();
     const notificationData = event.notification;
     console.info('WITBuzz onNotificationClicked', notificationData);
-    const urlToOpen = notificationData.data;
+    const urlToOpen = parseUrl(notificationData.data);
     if (urlToOpen) {
         let openClient = null;
         const allClients = await self.clients.matchAll({includeUncontrolled: true, type: 'window'});
@@ -51,6 +52,11 @@ async function onNotificationClicked(event) {
             await openUrl(urlToOpen);
         }
     }
+}
+
+function parseUrl(url) {
+    if (url) return new URL(url).href;
+    return new URL('/', self.location.origin).href;
 }
 
 async function openUrl(url) {
