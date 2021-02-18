@@ -14,7 +14,7 @@ function onServiceWorkerActivated(event) {
 }
 
 async function onPushReceived(event) {
-    if (event.data) {
+    if (event && event.data) {
         const msg = event.data.json();
         self.registration.showNotification(msg.title, msg.options);
     }
@@ -48,7 +48,6 @@ async function onNotificationClicked(event) {
                 console.error("Failed to navigate:", openClient, urlToOpen, e);
             }
         } else {
-            event.preventDefault();
             await openUrl(urlToOpen);
         }
     }
